@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title>AngularJS Application</title>
+	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+</head>
+<body>
+	<div>
+		<select ng-model="selected1">
+			<option ng-repeat="item in data">{{item}}</option>
+		</select>
+		<h1>你选择的是: {{selected1}}</h1>
+	</div>
+	<div>
+		<select ng-model="selected2" ng-options="item for item in data">
+		</select>
+		<h1>你选择的是: {{selected2}}</h1>
+	</div>
+	<div>
+		<select ng-model="selected3" ng-options="item.name for item in data">
+		</select>
+		<h1>你选择的是: {{selected3}}</h1>
+		<h1>你选择的name是: {{selected3.name}}</h1>
+		<h1>你选择的id是: {{selected3.id}}</h1>
+	</div>
+	<div>
+		<select ng-model="selected4" ng-options="k for (k,v) in {id:3, name:'Yaer'}">
+		</select>
+		<h1>你选择的是: {{selected4}}</h1>
+	</div>
+	<div>
+		<select ng-model="selected5" ng-options="v for (k,v) in {id:3, name:'Yaer'}">
+		</select>
+		<h1>你选择的是: {{selected5}}</h1>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.data = [
+				{id:1, name:"Jim"},
+				{id:2, name:"Erin"}
+			];
+		});
+	</script>
+</body>
+</html>
+

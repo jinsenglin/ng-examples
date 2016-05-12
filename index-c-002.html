@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title>AngularJS Application</title>
+	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+</head>
+<body>
+	<div>
+		<h1>隐藏 Button: <input type="checkbox" ng-model="myCheck1"></h1>
+		<button ng-hide="myCheck1">This is a button.</button>
+	</div>
+	<div>
+		<h1>顯示 Button: <input type="checkbox" ng-model="myCheck2"></h1>
+		<button ng-show="myCheck2">This is a button.</button>
+	</div>
+	<div>
+		<h1>禁用 ButtonD: <input type="checkbox" ng-model="myCheck3"></h1>
+		<button ng-disabled="myCheck3">This is a button.</button>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title>AngularJS Application</title>
+	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+</head>
+<body>
+	<div>
+		<form name="myForm">
+			<p>名字:<input type="text" name="user" ng-model="name" required></p>
+			<h1>Hello {{name}}</h1>
+			<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+				<span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+			</span>
+			<p>邮箱:<input type="email" name="email" ng-model="email" required></p>
+			<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+				<span ng-show="myForm.email.$error.required">邮箱是必须的。</span>
+				<span ng-show="myForm.email.$error.email">非法的邮箱。</span>
+			</span>
+			<input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid"/>
+		</form>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.name = "Jim";
+		});
+	</script>
+</body>
+</html>
+

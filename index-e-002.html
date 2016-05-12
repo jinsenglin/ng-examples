@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title>AngularJS Application</title>
+	<link rel="stylesheet" href="file:///Users/cclin/Desktop/angularjs-projects/css/bootstrap.css"/>
+	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular-strap/dist/angular-strap.min.js"></script>
+	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular-strap/dist/angular-strap.tpl.min.js"></script>
+</head>
+<body>
+	<div>
+		<button ng-click="clicked()">Show modal</button>
+	</div>
+	<script>
+		// https://github.com/mgcrea/angular-strap
+		var app = angular.module('myApp', ['mgcrea.ngStrap']);
+		app.controller('myCtrl', ['$scope', '$modal', function($scope, $modal) {
+			$scope.m = $modal({scope: $scope, show: false, content: 'This is a modal dialog.'});
+			$scope.clicked = function() {
+				$scope.m.show();
+			};
+		}]);
+	</script>
+</body>
+</html>
+
