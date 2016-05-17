@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="myApp" ng-controller="myCtrl">
+<html ng-app="demoApp" ng-controller="demoCtrl">
 <head>
 	<meta charset="utf-8">
-	<base href="/">
 	<title>AngularJS Application</title>
-	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
 </head>
 <body>
 	<div>
@@ -24,8 +23,8 @@
 		</form>
 	</div>
 	<script>
-		var app = angular.module('myApp', []);
-		app.controller('myCtrl', function($scope) {
+		var app = angular.module('demoApp', []);
+		app.controller('demoCtrl', function($scope) {
 			$scope.defaults = {name: "Jim", email: "jim@com.tw"};
 
 			$scope.reset = function() {
