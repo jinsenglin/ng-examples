@@ -12,6 +12,7 @@
         "url": "https://github.com/jinsenglin/ng-examples.git"
     },
     "devDependencies": {
+        "http-server": "*"
     },
     "dependencies": {
     }
