@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="myApp" ng-controller="myCtrl">
+<html ng-app="demoApp" ng-controller="demoCtrl">
 <head>
 	<meta charset="utf-8">
-	<base href="/">
 	<title>AngularJS Application</title>
-	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
 </head>
 <body>
 	<div>
@@ -36,8 +35,8 @@
 		<h1>你选择的是: {{selected5}}</h1>
 	</div>
 	<script>
-		var app = angular.module('myApp', []);
-		app.controller('myCtrl', function($scope) {
+		var app = angular.module('demoApp', []);
+		app.controller('demoCtrl', function($scope) {
 			$scope.data = [
 				{id:1, name:"Jim"},
 				{id:2, name:"Erin"}
