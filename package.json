@@ -1,19 +1,22 @@
 {
-    "name": "ng-example",
-    "version": "0.0.1",
-    "description": "AngularJS Examples",
-    "license": "(MIT OR Apache-2.0)",
-    "author": "Jim Lin",
-    "contributors": [
-        "Jim Lin <jimlintw922@gmail.com>"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jinsenglin/ng-examples.git"
-    },
-    "devDependencies": {
-        "http-server": "*"
-    },
-    "dependencies": {
-    }
+  "name": "ng-example",
+  "version": "0.0.1",
+  "description": "AngularJS Examples",
+  "license": "(MIT OR Apache-2.0)",
+  "author": "Jim Lin",
+  "contributors": [
+    "Jim Lin <jimlintw922@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jinsenglin/ng-examples.git"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "http-server": "*"
+  },
+  "dependencies": {
+    "angular": "^1.5.5"
+  }
 }
