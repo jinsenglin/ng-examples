@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="myApp" ng-controller="myCtrl">
+<html ng-app="demoApp" ng-controller="demoCtrl">
 <head>
 	<meta charset="utf-8">
-	<base href="/">
 	<title>AngularJS Application</title>
-	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
 </head>
 <body>
 	<div>
@@ -12,12 +11,12 @@
 		<h1>Hello [[name]]</h1>
 	</div>
 	<script>
-		var app = angular.module('myApp', []);
+		var app = angular.module('demoApp', []);
 		app.config(function ($interpolateProvider) {
 			$interpolateProvider.startSymbol('[[');
 			$interpolateProvider.endSymbol(']]');
 		});
-		app.controller('myCtrl', function($scope) {
+		app.controller('demoCtrl', function($scope) {
 			$scope.name = "Jim";
 		});
 	</script>
