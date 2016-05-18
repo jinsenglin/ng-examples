@@ -1,46 +1,41 @@
 <!DOCTYPE html>
-<html ng-app="myApp" ng-controller="myCtrl">
+<html ng-app="demoApp" ng-controller="demoCtrl">
 <head>
 	<meta charset="utf-8">
-	<base href="/">
 	<title>AngularJS Application</title>
-	<link rel="stylesheet" href="file:///Users/cclin/Desktop/angularjs-projects/css/bootstrap.css"/>
-	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
-	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular-strap/dist/angular-strap.min.js"></script>
-	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular-strap/dist/angular-strap.tpl.min.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../node_modules/d3/d3.min.js"></script>
 </head>
 <body>
 	<div>
-		<button ng-click="clicked()">Show alert</button>
+		<p>名字:<input type="text" ng-model="name"></p>
+		<h1>Hello {{name}}</h1>
 	</div>
 	<script>
-		// https://github.com/mgcrea/angular-strap
-		var app = angular.module('myApp', ['mgcrea.ngStrap']);
+		console.log(d3);
 
-		app.service('myService', ['$alert', function($alert) {
-			this.alert = function(type, content) {
-				if (type === 'success') title = '成功';
-				else if (type === 'warning') title = '告警';
-				else if (type === 'danger') title = '失敗';
-				else if (type === 'info') title = '通知';
-				else title = '通知';
-				return $alert({animation: 'am-fade-and-slide-top', title: title, content: content, placement: 'top-right', type: type, show: false, duration: 2});
-			};
-		}]);
+		d3.select('div')
+		.append('svg')
+		.attr({
+			'width': 200,
+			'height': 300
+		});
+		
+		d3.select('svg')
+		.append('circle')
+		.attr({
+			'cx':50,
+			'cy':50,
+			'r':30,
+			'fill':'#f90',
+			'stroke':'#c00',
+			'stroke-width':'5px'
+		});
 
-		app.controller('myCtrl', ['$scope', '$alert', 'myService', function($scope, $alert, myService) {
-			$scope.a_s = myService.alert('success', '操作完成並立即生效');
-			$scope.a_d = myService.alert('danger', '操作失敗');
-			$scope.a_w = myService.alert('warning', '操作完成,但未必生效');
-			$scope.a_i = myService.alert('info', '操作完成');
-
-			$scope.clicked = function() {
-				$scope.a_s.toggle();
-				$scope.a_w.toggle();
-				$scope.a_d.toggle();
-				$scope.a_i.toggle();
-			};
-		}]);
+		var app = angular.module('demoApp', []);
+		app.controller('demoCtrl', function($scope) {
+			$scope.name = "Jim";
+		});
 	</script>
 </body>
 </html>
