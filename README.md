@@ -14,13 +14,13 @@ cd ng-examples
 
 ./node_modules/.bin/http-server
 
-# Add more dev dependencies, e.g., bower
+# Add more dev dependencies, e.g., webpack
 
-npm install bower --save-dev
+npm install webpack --save-dev
 
 git add package.json
 
-git commit -m "add new dev dependency : bower"
+git commit -m "add new dev dependency : webpack"
 
 # Add more dependencies, e.g., angular 1.5.5
 
