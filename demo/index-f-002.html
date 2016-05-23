@@ -1,29 +1,50 @@
 <!DOCTYPE html>
-<html ng-app="myApp" ng-controller="myCtrl">
+<html ng-app="demoApp" ng-controller="demoCtrl">
 <head>
 	<meta charset="utf-8">
-	<base href="/">
 	<title>AngularJS Application</title>
-	<script type="text/javascript" src="file:///Users/cclin/Desktop/angularjs-projects/lib/angular.min.js"></script>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
 </head>
 <body>
-	<div>
-		<my-directive />
-	</div>
-	<div>
-		<my-directive></my-directive>
-	</div>
+	<form name="myForm">
+	<table border="1px">
+		<tr>
+			<td>
+				Item
+			</td>
+			<td>
+				myForm.$valid
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="text" ng-model="xyz" my-focus></input>
+			</td>
+			<td>
+				{{myForm.$valid}}
+			</td>
+		</tr>
+	</table>
+	</form>
 	<script>
-		var app = angular.module('myApp', []);
+		var app = angular.module('demoApp', []);
 
-		app.directive('myDirective', ['$rootScope', function($rootScope) {
+		app.directive('myFocus', ['$rootScope', function($rootScope) {
 			return {
-				restrict: 'E',
-				template: '<div>^_^</div>' 
+				restrict: 'A',
+				require: 'ngModel',
+				link: function(scope, element, attrs, ctrl) {
+					element[0].focus();
+
+					ctrl.$validators.myfocusorsomekey = function() {
+						var flag = false;
+						return flag;
+					};
+				}
 			};
 		}]);
 
-		app.controller('myCtrl', function($scope) {
+		app.controller('demoCtrl', function($scope) {
 			$scope.name = "Jim";
 		});
 	</script>
