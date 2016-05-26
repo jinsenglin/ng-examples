@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="demoApp" ng-controller="demoCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>AngularJS Application</title>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<style>
+		.red {
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p ng-repeat="item in data" ng-click="clickme($event)">名字:{{item.name}}</p>
+	</div>
+	<hr/>
+	<div>
+		<p ng-repeat="item in data | orderBy:'name'">名字:{{item.name}}</p>
+	</div>
+	<hr/>
+	<div>
+		<p ng-repeat="item in data | filter:{name: '1'}">名字:{{item.name}}</p>
+	</div>
+	<script>
+		var app = angular.module('demoApp', []);
+		app.controller('demoCtrl', function($scope) {
+			$scope.clickme = function(e) {
+				angular.element(e.target).toggleClass("red");
+			};
+			$scope.data = [
+				{id:1, name:"Jim"},
+				{id:2, name:"Erin"},
+				{id:3, name:"Jim1"}
+			];
+		});
+	</script>
+</body>
+</html>
+
