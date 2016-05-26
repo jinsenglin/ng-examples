@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="demoApp" ng-controller="demoCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>AngularJS Application</title>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<style>
+		input {
+			width: 300px;
+		}
+		textarea {
+			width: 300px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<form name="myForm">
+			<p>network:<input type="text" name="network" ng-model="network" required ng-change="networkChanged()"/></p>
+			<p>gateway:<input type="text" name="gateway" ng-model="gateway" required ng-change="gatewayChanged()"/></p>
+			<p>ip range:<textarea type="text" name="iprange" ng-model="iprange" required ng-changed="iprangeChanged()"></textarea></p>
+			<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+				<span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+			</span>
+			<input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid"/>
+		</form>
+	</div>
+	<script>
+		var app = angular.module('demoApp', []);
+		app.controller('demoCtrl', function($scope) {
+			// default data for testing
+			$scope.network = "192.168.1.0/24";
+			$scope.gateway = "192.168.1.1";
+			$scope.iprange = "192.168.1.2,192.168.1.100\n192.168.1.101,192.168.1.254";
+
+			$scope.flags = {};
+			$scope.networkChanged = function() {
+				var re = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\/[0-9]+/;
+				var str = '' + $scope.network;
+				$scope.flags.flag1 = re.test(str)
+				console.log('flag1 : ' + $scope.flags.flag1);
+			};
+
+			$scope.gatewayChanged = function() {
+				var re = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/;
+				var str = '' + $scope.gateway;
+				$scope.flags.flag2 = re.test(str)
+				console.log('flag2 : ' + $scope.flags.flag2);
+
+				if ($scope.flags.flag1 && $scope.flags.flag2) {
+					//TODO
+					$scope.flags.flag3 = true;
+				}
+				else {
+					$scope.flags.flag3 = false;
+				}
+				console.log('flag3 : ' + $scope.flags.flag3);
+			};
+
+			$scope.iprangeChanged = function() {
+			};
+		});
+	</script>
+</body>
+</html>
+
