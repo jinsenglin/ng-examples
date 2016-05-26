@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>AngularJS Application</title>
 	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="ip_calc.js"></script>
 	<style>
 		input {
 			width: 300px;
@@ -19,7 +20,7 @@
 		<form name="myForm">
 			<p>network:<input type="text" name="network" ng-model="network" required ng-change="networkChanged()"/></p>
 			<p>gateway:<input type="text" name="gateway" ng-model="gateway" required ng-change="gatewayChanged()"/></p>
-			<p>ip range:<textarea type="text" name="iprange" ng-model="iprange" required ng-changed="iprangeChanged()"></textarea></p>
+			<p>ip range:<textarea type="text" name="iprange" ng-model="iprange" required ng-change="iprangeChanged()"></textarea></p>
 			<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
 				<span ng-show="myForm.user.$error.required">用户名是必须的。</span>
 			</span>
@@ -49,7 +50,16 @@
 				console.log('flag2 : ' + $scope.flags.flag2);
 
 				if ($scope.flags.flag1 && $scope.flags.flag2) {
-					//TODO
+					var net_mask = $scope.network.split('/');
+					var net = net_mask[0];
+					var mask = net_mask[1];
+
+					// TODO
+					// REF http://www.study-area.org/network/network_ip_addr.html
+					// Bitwise NOT Operator : ~
+					// Bitwise XOR Operator : ^
+					// Bitwise AND Operator : &
+					// Bitwise OR Operator : |
 					$scope.flags.flag3 = true;
 				}
 				else {
@@ -59,6 +69,15 @@
 			};
 
 			$scope.iprangeChanged = function() {
+				var lines = $scope.iprange.split('\n');
+				var re = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+,[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/;
+				$scope.flags.flag4 = true;
+				lines.forEach(function(item) {
+					$scope.flags.flag4 = $scope.flags.flag4 && re.test(item);
+				});
+				console.log('flag4 : ' + $scope.flags.flag4);
+
+				// TODO
 			};
 		});
 	</script>
