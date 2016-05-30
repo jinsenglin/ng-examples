@@ -30,6 +30,17 @@
 	<script>
 		var app = angular.module('demoApp', []);
 		app.controller('demoCtrl', function($scope) {
+			// try ip-calc
+			var ip0 = new IPv4_Address("192.168.1.0","16");
+			console.log(ip0);
+			var ip1 = new IPv4_Address("192.168.2.31","16");
+			console.log(ip1);
+			var ip2 = new IPv4_Address("192.168.1.1","16");
+			console.log(ip2);
+			var ip3 = new IPv4_Address("192.168.1.1","24");
+			console.log(ip3);
+			console.log( !(ip2.addressInteger <= ip1.addressInteger && ip1.addressInteger <= ip3.addressInteger) )
+
 			// default data for testing
 			$scope.network = "192.168.1.0/24";
 			$scope.gateway = "192.168.1.1";
