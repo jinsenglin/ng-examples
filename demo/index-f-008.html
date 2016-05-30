@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="demoApp" ng-controller="demoCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>AngularJS Application</title>
+	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+</head>
+<body>
+	<div>
+		<input type="text" my-focus></input>
+	</div>
+	<script>
+		var app = angular.module('demoApp', []);
+
+		app.directive('myFocus', ['$rootScope', function($rootScope) {
+
+		function fn1(scope, element, attrs) {
+			scope.x = 1;
+			console.log(attrs);
+		}
+		function fn2(scope, element, attrs) {
+			element[0].focus();
+			console.log(scope.x);
+		}
+
+			return {
+				restrict: 'A',
+				scope: {},
+				compile: function() {
+					return {
+						pre: fn1,
+						post: fn2
+					};
+				},
+				link: function(scope, element, attrs) {
+					element[0].focus();
+					console.log(scope.x);
+				}
+			};
+		}]);
+
+		app.controller('demoCtrl', function($scope) {
+			$scope.name = "Jim";
+		});
+	</script>
+</body>
+</html>
+
