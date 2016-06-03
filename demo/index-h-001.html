@@ -4,16 +4,45 @@
 	<meta charset="utf-8">
 	<title>AngularJS Application</title>
 	<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../node_modules/angular-translate/dist/angular-translate.min.js"></script>
 </head>
 <body>
 	<div>
 		<p>名字:<input type="text" ng-model="name"></p>
-		<h1>Hello {{name}}</h1>
+		<h1><span translate="TITLE"></span> {{name}}</h1>
+		<button ng-click="changeLanguage('en');">en</button>
+		<button ng-click="changeLanguage('de');">de</button>
 	</div>
 	<script>
-		var app = angular.module('demoApp', []);
-		app.controller('demoCtrl', function($scope) {
+		var app = angular.module('demoApp', ['pascalprecht.translate']);
+
+		
+		// sample code
+		app.config(function ($translateProvider) {
+			  $translateProvider.translations('en', {
+				      TITLE: 'Hello',
+				          FOO: 'This is a paragraph.',
+					      BUTTON_LANG_EN: 'english',
+					          BUTTON_LANG_DE: 'german'
+						    });
+						      $translateProvider.translations('de', {
+							          TITLE: 'Hallo',
+								      FOO: 'Dies ist ein Paragraph.',
+								          BUTTON_LANG_EN: 'englisch',
+									      BUTTON_LANG_DE: 'deutsch'
+									        });
+										  $translateProvider.preferredLanguage('en');
+										  });
+
+
+		app.controller('demoCtrl', function($scope, $locale, $translate) {
 			$scope.name = "Jim";
+			console.log($locale);
+
+			//sample code
+			$scope.changeLanguage = function (key) {
+				    $translate.use(key);
+				      };
 		});
 	</script>
 </body>
