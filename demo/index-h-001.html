@@ -12,6 +12,7 @@
 		<h1><span translate="TITLE"></span> <span>{{ 'TITLE' | translate }}</span> {{name}}</h1>
 		<button ng-click="changeLanguage('en');">en</button>
 		<button ng-click="changeLanguage('de');">de</button>
+		<div>{{foo}}</div>
 	</div>
 	<script>
 		var app = angular.module('demoApp', ['pascalprecht.translate']);
@@ -42,7 +43,12 @@
 			//sample code
 			$scope.changeLanguage = function (key) {
 				    $translate.use(key);
-				      };
+
+			    $translate('FOO').then(function(v) {
+				    console.log(v);
+				    $scope.foo = v;
+			    });
+			};
 		});
 	</script>
 </body>
