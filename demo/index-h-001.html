@@ -9,7 +9,7 @@
 <body>
 	<div>
 		<p>名字:<input type="text" ng-model="name"></p>
-		<h1><span translate="TITLE"></span> {{name}}</h1>
+		<h1><span translate="TITLE"></span> <span>{{ 'TITLE' | translate }}</span> {{name}}</h1>
 		<button ng-click="changeLanguage('en');">en</button>
 		<button ng-click="changeLanguage('de');">de</button>
 	</div>
